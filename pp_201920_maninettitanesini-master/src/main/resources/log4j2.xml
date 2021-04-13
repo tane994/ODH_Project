@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
+    <Properties>
+        <Property name="logPath">logs</Property>
+    </Properties>
+
+    <Appenders>
+        <File name="logFile" fileName="${logPath}/app.log" append="true">
+            <PatternLayout disableAnsi ="true" pattern ="%highlight{%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level | %C{2} (%F:%L) | %msg%n}{FATAL=red, ERROR=red, WARN=yellow, INFO=green, DEBUG=cyan, TRACE=black}"/>
+        </File>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout disableAnsi="false" pattern="%highlight{%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level | %C{2} (%F:%L) | %msg%n}{FATAL=red, ERROR=red, WARN=yellow, INFO=green, DEBUG=cyan, TRACE=black}"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="logFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
